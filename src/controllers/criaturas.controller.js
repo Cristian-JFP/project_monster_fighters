@@ -1,3 +1,5 @@
+const pool = require('../config/db');
+
 let criaturas = [
     {
         id: 1,
