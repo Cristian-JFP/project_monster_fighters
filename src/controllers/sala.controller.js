@@ -1,65 +1,52 @@
-const equipoModel = require("../models/equipo.model");
+const salaModel = require("../models/sala.model"); // ojo: NO equipoModel
 
-const obtenerEquipos = async (req, res) => {
+const obtenerSalas = async (req, res) => {
     try {
-        const equipos = await equipoModel.obtenerEquipos();
-
-        res.json(equipos);
+        res.json(await salaModel.obtenerSalas());
     } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al obtener los equipos",
-            error: error.message
-        });
+        res.status(500).json({ mensaje: "Error al obtener las salas", error: error.message });
     }
 };
 
-const obtenerEquipoPorId = async (req, res) => {
+const obtenerSalaPorId = async (req, res) => {
     try {
-        const equipo = await equipoModel.obtenerEquipoPorId(
-            req.params.id
-        );
-
-        if (!equipo) {
-            return res.status(404).json({
-                mensaje: "Equipo no encontrado"
-            });
-        }
-
-        res.json(equipo);
+        const sala = await salaModel.obtenerSalaPorId(req.params.id);
+        if (!sala) return res.status(404).json({ mensaje: "Sala no encontrada" });
+        res.json(sala);
     } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al obtener el equipo",
-            error: error.message
-        });
+        res.status(500).json({ mensaje: "Error al obtener la sala", error: error.message });
     }
 };
 
-const crearEquipo = async (req, res) => {
+const crearSala = async (req, res) => {
     try {
-        const {
-            nombre,
-            id_usuario
-        } = req.body;
-
-        const resultado = await equipoModel.crearEquipo(
-            nombre,
-            id_usuario
-        );
-
-        res.status(201).json({
-            mensaje: "Equipo creado correctamente",
-            id_equipo: resultado.insertId
-        });
+        const { nombre, codigo, estado, id_creador } = req.body;
+        const resultado = await salaModel.crearSala(nombre, codigo, estado, id_creador);
+        res.status(201).json({ mensaje: "Sala creada correctamente", id_sala: resultado.insertId });
     } catch (error) {
-        res.status(500).json({
-            mensaje: "Error al crear el equipo",
-            error: error.message
-        });
+        res.status(500).json({ mensaje: "Error al crear la sala", error: error.message });
     }
 };
 
-module.exports = {
-    obtenerEquipos,
-    obtenerEquipoPorId,
-    crearEquipo
+const actualizarSala = async (req, res) => {
+    try {
+        const { nombre, codigo, estado } = req.body;
+        const resultado = await salaModel.actualizarSala(req.params.id, nombre, codigo, estado);
+        if (resultado.affectedRows === 0) return res.status(404).json({ mensaje: "Sala no encontrada" });
+        res.json({ mensaje: "Sala actualizada correctamente" });
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al actualizar la sala", error: error.message });
+    }
 };
+
+const eliminarSala = async (req, res) => {
+    try {
+        const resultado = await salaModel.eliminarSala(req.params.id);
+        if (resultado.affectedRows === 0) return res.status(404).json({ mensaje: "Sala no encontrada" });
+        res.json({ mensaje: "Sala eliminada correctamente" });
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al eliminar la sala", error: error.message });
+    }
+};
+
+module.exports = { obtenerSalas, obtenerSalaPorId, crearSala, actualizarSala, eliminarSala };

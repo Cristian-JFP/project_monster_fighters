@@ -1,13 +1,11 @@
 const express = require("express");
-
 const router = express.Router();
+const equipoController = require("../controllers/equipo.controller"); // ojo: NO objetoController
 
-const objetoController = require("../controllers/objeto.controller");
-
-router.get("/", objetoController.obtenerObjetos);
-
-router.get("/:id", objetoController.obtenerObjetoPorId);
-
-router.post("/", objetoController.crearObjeto);
+router.get("/", equipoController.obtenerEquipos);
+router.get("/:id", equipoController.obtenerEquipoPorId);
+router.post("/", equipoController.crearEquipo);
+router.put("/:id", equipoController.actualizarEquipo);
+router.delete("/:id", equipoController.eliminarEquipo);
 
 module.exports = router;
