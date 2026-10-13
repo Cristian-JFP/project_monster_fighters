@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-app.use(express.json());
+const authRoutes = require('./routes/auth.routes'); 
 
 // Middleware para leer json
 app.use(express.json());
@@ -20,15 +20,10 @@ app.use((req, res, next) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-
-
-
-
+app.use('/api/tipos', tipoRouter);
 
 // Rutas
 const tipoRouter = require('./routes/tipo.routes');
-
-app.use('/api/tipos', tipoRouter);
 
 // Ruta principal
 app.get('/', (req, res) => {
