@@ -1,9 +1,9 @@
-const pool = require('../config/db');
+const pool = require('../config/db.config');
 
 const getAll = async () => {
   const [rows] = await pool.query(
     `SELECT * FROM criatura_movimiento
-     ORDER BY id_criatura, id_movimiento`
+    ORDER BY id_criatura, id_movimiento`
   );
 
   return rows;
@@ -12,7 +12,7 @@ const getAll = async () => {
 const getById = async (id_criatura, id_movimiento) => {
   const [rows] = await pool.query(
     `SELECT * FROM criatura_movimiento
-     WHERE id_criatura = ? AND id_movimiento = ?`,
+    WHERE id_criatura = ? AND id_movimiento = ?`,
     [
       id_criatura,
       id_movimiento
@@ -45,7 +45,7 @@ const create = async ({
 const remove = async (id_criatura, id_movimiento) => {
   const [result] = await pool.query(
     `DELETE FROM criatura_movimiento
-     WHERE id_criatura = ? AND id_movimiento = ?`,
+    WHERE id_criatura = ? AND id_movimiento = ?`,
     [
       id_criatura,
       id_movimiento

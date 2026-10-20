@@ -1,4 +1,4 @@
-const pool = require('../config/db');
+const pool = require('../config/db.config');
 
 const getAll = async () => {
   const [rows] = await pool.query(
@@ -11,7 +11,7 @@ const getAll = async () => {
 const getById = async (id_batalla, id_usuario) => {
   const [rows] = await pool.query(
     `SELECT * FROM jugador_batalla
-     WHERE id_batalla = ? AND id_usuario = ?`,
+    WHERE id_batalla = ? AND id_usuario = ?`,
     [
       id_batalla,
       id_usuario
@@ -73,13 +73,13 @@ const update = async (id_batalla, id_usuario, {
 }) => {
   const [result] = await pool.query(
     `UPDATE jugador_batalla
-     SET
-       id_equipo = ?,
-       posicion = ?,
-       resultado = ?,
-       rating_anterior = ?,
-       rating_nuevo = ?
-     WHERE id_batalla = ? AND id_usuario = ?`,
+    SET
+      id_equipo = ?,
+      posicion = ?,
+      resultado = ?,
+      rating_anterior = ?,
+      rating_nuevo = ?
+    WHERE id_batalla = ? AND id_usuario = ?`,
     [
       id_equipo,
       posicion,
@@ -97,7 +97,7 @@ const update = async (id_batalla, id_usuario, {
 const remove = async (id_batalla, id_usuario) => {
   const [result] = await pool.query(
     `DELETE FROM jugador_batalla
-     WHERE id_batalla = ? AND id_usuario = ?`,
+    WHERE id_batalla = ? AND id_usuario = ?`,
     [
       id_batalla,
       id_usuario

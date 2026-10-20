@@ -44,10 +44,10 @@ const update = async (id_tipo, {
 }) => {
   const [result] = await pool.query(
     `UPDATE tipo
-     SET
-       nombre = ?,
-       descripcion = ?
-     WHERE id_tipo = ?`,
+    SET
+      nombre = ?,
+      descripcion = ?
+    WHERE id_tipo = ?`,
     [
       nombre,
       descripcion,

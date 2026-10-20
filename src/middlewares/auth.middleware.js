@@ -1,21 +1,26 @@
 const jwt = require('jsonwebtoken');
-const bcrypt  = require('bcryptjs');
-const Usuario = require('../models/usuario');
-
 
 const verifyToken = (req, res, next) => {
-    const token = req.headers['x-access-token'] || req.headers['authorization'];
-    
-    if (!token) {
-        return res.status(403).json({ message: "Token no proporcionado" });
+    const authorization = req.headers.authorization;
+
+    if (!authorization || !authorization.startsWith('Bearer ')) {
+        return res.status(401).json({
+            message: 'Debes iniciar sesión para acceder a esta ruta'
+        });
     }
 
+    const token = authorization.split(' ')[1];
+
     try {
-        const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
         req.user = decoded;
+
         next();
     } catch (error) {
-        return res.status(401).json({ message: "Token inválido" });
+        return res.status(401).json({
+            message: 'Token inválido o expirado'
+        });
     }
 };
 

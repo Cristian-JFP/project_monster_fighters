@@ -1,4 +1,4 @@
-const pool = require('../config/db');
+const pool = require('../config/db.config');
 
 const getAll = async () => {
   const [rows] = await pool.query(
@@ -48,11 +48,11 @@ const update = async (id_equipo, {
 }) => {
   const [result] = await pool.query(
     `UPDATE equipo
-     SET
-       nombre = ?,
-       fecha_creacion = ?,
-       id_usuario = ?
-     WHERE id_equipo = ?`,
+    SET
+      nombre = ?,
+      fecha_creacion = ?,
+      id_usuario = ?
+    WHERE id_equipo = ?`,
     [
       nombre,
       fecha_creacion,

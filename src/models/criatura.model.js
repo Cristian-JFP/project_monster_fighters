@@ -1,4 +1,4 @@
-const pool = require('../config/db');
+const pool = require('../config/db.config');
 
 const getAll = async () => {
   const [rows] = await pool.query(
@@ -92,18 +92,18 @@ const update = async (id, {
 
   const [result] = await pool.query(
     `UPDATE criatura
-     SET
-       nombre = ?,
-       descripcion = ?,
-       vida_base = ?,
-       velocidad = ?,
-       id_tipo = ?,
-       defensa_especial = ?,
-       ataque_especial = ?,
-       defensa_base = ?,
-       ataque_base = ?,
-       rareza = ?
-     WHERE id_criatura = ?`,
+    SET
+      nombre = ?,
+      descripcion = ?,
+      vida_base = ?,
+      velocidad = ?,
+      id_tipo = ?,
+      defensa_especial = ?,
+      ataque_especial = ?,
+      defensa_base = ?,
+      ataque_base = ?,
+      rareza = ?
+    WHERE id_criatura = ?`,
     [
       nombre,
       descripcion,
