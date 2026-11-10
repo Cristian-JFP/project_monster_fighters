@@ -1,0 +1,547 @@
+
+/* =========================================
+   MONSTER FIGHTERS
+   ESTILOS GENERALES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: #101018;
+    --fondo-secundario: #191927;
+    --tarjeta: #202033;
+    --morado: #8b5cf6;
+    --morado-claro: #a78bfa;
+    --texto: #ffffff;
+    --texto-secundario: #b5b5c8;
+    --borde: #343449;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =========================================
+   ENCABEZADO Y NAVEGACION
+========================================= */
+
+.header {
+    min-height: 85px;
+    background: #171723;
+    border-bottom: 1px solid var(--borde);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 4%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.logo strong {
+    color: var(--morado-claro);
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.activo {
+    color: var(--morado-claro);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.usuario-header {
+    color: var(--morado-claro);
+    font-size: 13px;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.btn-primary,
+.btn-outline {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 13px;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--morado);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #7441dc;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--morado);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: var(--morado);
+}
+
+/* =========================================
+   CONTENEDORES
+========================================= */
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto;
+}
+
+.titulo-seccion {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.descripcion-seccion {
+    color: var(--texto-secundario);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   PAGINA DE INICIO
+========================================= */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 50px 20px;
+
+    background:
+        linear-gradient(
+            rgba(12, 10, 25, 0.78),
+            rgba(12, 10, 25, 0.94)
+        );
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.logo-principal {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 25px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 7vw, 68px);
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--morado-claro);
+}
+
+.hero p {
+    color: var(--texto-secundario);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* =========================================
+   TARJETAS DE INICIO
+========================================= */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+    gap: 22px;
+}
+
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 22px;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: var(--morado);
+}
+
+.tarjeta h3 {
+    margin-bottom: 12px;
+}
+
+.tarjeta p {
+    color: var(--texto-secundario);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   FORMULARIOS
+========================================= */
+
+.formulario {
+    width: 90%;
+    max-width: 430px;
+    margin: 55px auto;
+    padding: 30px;
+
+    background: var(--fondo-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.formulario h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.formulario label {
+    display: block;
+    margin: 17px 0 8px;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 13px;
+
+    border-radius: 6px;
+    border: 1px solid var(--borde);
+
+    background: var(--fondo);
+    color: white;
+}
+
+.formulario input:focus {
+    outline: 1px solid var(--morado);
+}
+
+.formulario button {
+    width: 100%;
+    margin-top: 22px;
+}
+
+.formulario p {
+    margin-top: 20px;
+    color: var(--texto-secundario);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.mensaje-error {
+    color: #ff7777 !important;
+}
+
+.mensaje-exito {
+    color: #86efac !important;
+}
+
+/* =========================================
+   CATALOGO DE MONSTRUOS
+========================================= */
+
+.monstruos-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(230px, 1fr)
+    );
+    gap: 22px;
+}
+
+.monstruo-card {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.monstruo-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--morado);
+}
+
+.monstruo-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #191927;
+    padding: 12px;
+}
+
+.monstruo-info {
+    padding: 18px;
+}
+
+.monstruo-info h3 {
+    margin: 12px 0;
+}
+
+.monstruo-info p {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #48317b;
+    color: #e0d2ff;
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    margin: 3px;
+}
+
+/* =========================================
+   PERFIL
+========================================= */
+
+.perfil-card {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.perfil-card h2 {
+    color: var(--morado-claro);
+    margin-bottom: 15px;
+}
+
+.perfil-dato {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--borde);
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.perfil-dato span {
+    color: var(--texto-secundario);
+}
+
+.perfil-dato strong {
+    text-align: right;
+}
+
+/* =========================================
+   PAGINAS EN DESARROLLO
+========================================= */
+
+.desarrollo {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.desarrollo h1 {
+    font-size: 38px;
+    color: var(--morado-claro);
+    margin-bottom: 20px;
+}
+
+.desarrollo p {
+    color: var(--texto-secundario);
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    background: #171723;
+    border-top: 1px solid var(--borde);
+    padding: 35px 5% 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+    );
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer h2,
+.footer h3 {
+    color: var(--morado-claro);
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.9;
+    display: block;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--borde);
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* =========================================
+   REPRODUCTOR DE MUSICA
+========================================= */
+
+.reproductor {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.reproductor button {
+    background: var(--morado);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 18px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .header {
+        justify-content: center;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .header-actions {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        gap: 13px;
+        justify-content: center;
+    }
+
+    .navbar a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .logo-principal {
+        width: 190px;
+        height: 190px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .titulo-seccion {
+        font-size: 25px;
+    }
+
+    .perfil-dato {
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi perfil | Monster Fighters</title>
+
+    <link rel="icon" href="img/icono.ico">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+
+    <main class="contenedor">
+
+        <h1 class="titulo-seccion" style="text-align:center">
+            Perfil del jugador
+        </h1>
+
+        <p class="descripcion-seccion" style="text-align:center">
+            Información de tu cuenta en Monster Fighters.
+        </p>
+
+
+        <section class="perfil-card">
+
+            <h2 id="perfilNombre">
+                Jugador
+            </h2>
+
+
+            <div class="perfil-dato">
+
+                <span>ID de usuario</span>
+
+                <strong id="perfilId">-</strong>
+
+            </div>
+
+
+            <div class="perfil-dato">
+
+                <span>Nombre de usuario</span>
+
+                <strong id="perfilNombreDato">-</strong>
+
+            </div>
+
+
+            <div class="perfil-dato">
+
+                <span>Fecha de registro</span>
+
+                <strong id="perfilFecha">-</strong>
+
+            </div>
+
+
+            <div class="perfil-dato">
+
+                <span>Rating</span>
+
+                <strong id="perfilRating">0</strong>
+
+            </div>
+
+
+            <div class="perfil-dato">
+
+                <span>Rango</span>
+
+                <strong id="perfilRango">-</strong>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="footer"></div>
+
+
+    <script src="js/app.js"></script>
+
+
+    <script>
+
+        // Obtener usuario guardado
+        const usuarioPerfil = JSON.parse(
+            localStorage.getItem("usuario") || "null"
+        );
+
+
+        if (usuarioPerfil) {
+
+            // Nombre
+            document.getElementById("perfilNombre").textContent =
+                usuarioPerfil.nombre_usuario;
+
+            document.getElementById("perfilNombreDato").textContent =
+                usuarioPerfil.nombre_usuario;
+
+
+            // Identificador
+            document.getElementById("perfilId").textContent =
+                usuarioPerfil.id_usuario ?? "-";
+
+
+            // Rating
+            document.getElementById("perfilRating").textContent =
+                usuarioPerfil.rating ?? 0;
+
+
+            // Rango
+            document.getElementById("perfilRango").textContent =
+                usuarioPerfil.id_rango ?? "Sin rango";
+
+
+            // Fecha de registro
+            if (usuarioPerfil.fecha_registrado) {
+
+                const fecha = new Date(
+                    usuarioPerfil.fecha_registrado
+                );
+
+                document.getElementById("perfilFecha").textContent =
+
+                    isNaN(fecha.getTime())
+                    ? usuarioPerfil.fecha_registrado
+                    : fecha.toLocaleDateString("es-CO");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro | Monster Fighters</title>
+
+    <link rel="icon" href="img/icono.ico">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+
+    <main>
+
+        <form class="formulario" id="formRegistro">
+
+            <h1>Crear cuenta</h1>
+
+
+            <label for="nombre">
+                Nombre de usuario
+            </label>
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Tu nombre de usuario"
+                required
+            >
+
+
+            <label for="correo">
+                Correo electrónico
+            </label>
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="correo@ejemplo.com"
+                required
+            >
+
+
+            <label for="contrasena">
+                Contraseña
+            </label>
+
+            <input
+                type="password"
+                id="contrasena"
+                placeholder="Mínimo 8 caracteres"
+                minlength="8"
+                required
+            >
+
+
+            <label for="confirmar">
+                Confirmar contraseña
+            </label>
+
+            <input
+                type="password"
+                id="confirmar"
+                placeholder="Repite tu contraseña"
+                minlength="8"
+                required
+            >
+
+
+            <button type="submit" class="btn-primary">
+                Registrarse
+            </button>
+
+
+            <p id="mensaje"></p>
+
+
+            <p>
+                ¿Ya tienes una cuenta?
+
+                <a href="login.html" style="color:#a78bfa">
+                    Inicia sesión
+                </a>
+            </p>
+
+        </form>
+
+    </main>
+
+
+    <div id="footer"></div>
+
+
+    <script src="js/app.js"></script>
+
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>
