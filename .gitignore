@@ -1,2 +1,24 @@
+# Dependencias de Node.js
 node_modules/
+
+# Archivos privados de configuración
 .env
+.env.*
+!.env.example
+
+# Credenciales
+serviceAccountKey.json
+
+# Archivos generados
+dist/
+dist-ssr/
+build/
+coverage/
+
+# Registros
+*.log
+
+# Editores
+.vscode/
+.idea/
+.DS_Store
