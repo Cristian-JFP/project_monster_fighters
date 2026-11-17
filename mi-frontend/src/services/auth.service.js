@@ -12,3 +12,8 @@ export const iniciarSesion = async (data) => {
 const res = await api.post('/auth/login', data);
 return res.data;
 };
+
+// Cerrar sesión
+export const cerrarSesion = () => {
+    localStorage.removeItem('token');
+};
