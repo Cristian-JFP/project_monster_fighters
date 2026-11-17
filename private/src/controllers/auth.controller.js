@@ -133,8 +133,27 @@ const login = async (req, res) => {
     }
 };
 
+// PERFIL
+// GET /api/auth/profile
+const perfil = async (req, res) => {
+    try {
+        const usuario = await Usuario.getById(req.user.id_usuario);
 
+        if (!usuario) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        // Nunca devolver el hash de la contraseña
+        const { contraseña, ...datos } = usuario;
+
+        res.json(datos);
+    } catch (error) {
+        console.error('Error en perfil:', error);
+        res.status(500).json({ error: 'Error al obtener perfil' });
+    }
+};
 module.exports = {
     register,
-    login
+    login,
+    perfil
 };
