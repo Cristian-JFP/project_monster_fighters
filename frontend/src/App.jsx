@@ -8,7 +8,6 @@ import Register from './pages/Register';
 import Perfil from './pages/Perfil';
 import Monstruos from './pages/Monstruos';
 import EnDesarrollo from './pages/EnDesarrollo';
-import Footer from './components/Footer';
 import Reproductor from './components/Reproductor';   // ← línea nueva
 
 export default function App() {

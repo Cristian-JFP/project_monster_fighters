@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 const MENU = '/audio/menu.mp3';
 const CHILL = '/audio/chill.mp3';
 const ESPERA = '/audio/espera.mp3';

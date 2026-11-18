@@ -9,7 +9,9 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "proyecto_monster_fighters",
     connectionLimit: 10,
-    waitForConnections: true
+    waitForConnections: true,
+    // Aiven exige SSL: en Render pon DB_SSL=true. En XAMPP (local) no se pone.
+    ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : undefined
 });
 
 // Verificar conexión al iniciar

@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 
 // Rutas
 const tipoRouter = require('./routes/tipo.routes');
@@ -31,18 +32,21 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS middleware
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 
-        'GET, POST, PUT, DELETE, PATCH');
-        return res.status(200).json({});
-    }
-    next();
-});
+// CORS: solo deja entrar al frontend (URL de Vercel en FRONTEND_URL).
+// Se pueden poner varias URLs separadas por coma.
+const origenesPermitidos = [
+    'http://localhost:5173',
+    ...(process.env.FRONTEND_URL || '')
+        .split(',')
+        .map((url) => url.trim().replace(/\/$/, ''))
+        .filter(Boolean)
+];
+
+app.use(cors({
+    origin: origenesPermitidos,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Health check route
 app.get('/health', (req, res) => {
