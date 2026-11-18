@@ -1,19 +1,25 @@
-
 import api from '../api/axiosConfig';
 
-// POST /api/auth/register
-export const registrarUsuario = async (data) => {
-const res = await api.post('/auth/register', data);
-return res.data;
+export const registrarUsuario = async (datos) => {
+  const respuesta = await api.post('/auth/register', datos);
+  return respuesta.data;
 };
 
-// POST /api/auth/login
-export const iniciarSesion = async (data) => {
-const res = await api.post('/auth/login', data);
-return res.data;
+export const iniciarSesion = async (datos) => {
+  const respuesta = await api.post('/auth/login', datos);
+  return respuesta.data;
 };
 
-// Cerrar sesión
+export const obtenerPerfil = async () => {
+  const respuesta = await api.get('/auth/profile');
+  return respuesta.data;
+};
+
+export const actualizarPerfil = async (datos) => {
+  const respuesta = await api.put('/auth/profile', datos);
+  return respuesta.data;
+};
+
 export const cerrarSesion = () => {
-    localStorage.removeItem('token');
+  localStorage.removeItem('token');
 };

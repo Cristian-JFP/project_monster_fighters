@@ -1,16 +1,42 @@
-# React + Vite
+# Monster Fighters - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React + Vite del proyecto académico Monster Fighters.
 
-Currently, two official plugins are available:
+## Requisitos
+- Node.js instalado.
+- Backend Node.js ejecutándose en `http://localhost:3000`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Instalación
+Desde esta carpeta:
 
-## React Compiler
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Configuración local
+Crea un archivo `.env` en esta carpeta con:
 
-## Expanding the ESLint configuration
+```env
+VITE_API_URL=http://localhost:3000/api
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Ejecutar
+```bash
+npm run dev
+```
+
+Abre la dirección local que muestre Vite (normalmente `http://localhost:5173`).
+
+## Publicación en Vercel
+- Root Directory: `mi-frontend`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Variable de entorno: `VITE_API_URL=https://TU-BACKEND-EN-RENDER/api`
+
+El archivo `vercel.json` permite que las rutas de React funcionen al recargar una página.
+
+## Notas
+- El inicio de sesión, registro y perfil utilizan `/api/auth`.
+- El catálogo consulta `GET /api/criatura`. Confirma que esa ruta exista en el backend.
+- Objetos/equipamientos y equipo están presentados como secciones en desarrollo.
+- Batallas muestra que todavía no está disponible.
